@@ -25,8 +25,6 @@ Add Two addtional networks to instance on creation under network and sec_groups.
 ```
  # git clone --recurse-submodules -j4 https://github.com/rackerlabs/genestack /opt/genestack
 
- # export GENESTACK_PRODUCT=openstack-flex
- 
  # /opt/genestack/bootstrap.sh
 ```
 
@@ -150,10 +148,7 @@ Add Two addtional networks to instance on creation under network and sec_groups.
 
   # Label the storage nodes - optional and only used when deploying ceph for K8S infrastructure shared storage
   kubectl label node $(kubectl get nodes | awk '/ctrl/ {print $1}') role=storage-node
-  
-  # Label the HashiCorp Vault nodes
-  kubectl label node $(kubectl get nodes | awk '/ctrl/ {print $1}' |head -3) vault-storage=enabled
-  
+
   # Label the openstack controllers
   kubectl label node $(kubectl get nodes | awk '/ctrl/ {print $1}') openstack-control-plane=enabled
   
